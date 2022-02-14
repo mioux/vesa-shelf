@@ -1,21 +1,11 @@
 module main(spacing){
     sm=0.001;
-    //if (spacing == 0) spacing=100; //Square VESA mounting pattern, 100mm or 75mm
     m4r=2.25; //hole for M4 hardware with some clearance
     offset=30; //distance from original position
     thickness=6;
     difference(){
-        // overall shape
-        //minkowski(){
-            cube([spacing+20, spacing+offset + 20, thickness], center=true);
-        //    cylinder(r=10, h=sm);
-        //}
-        // central hole to save material
-        //minkowski(){
-            cube([spacing-20, spacing-20+offset, thickness+2], center=true);
-        //    cylinder(r=8, h=sm);
-        //}
-        // mounting holes, only 4 need to be countersunk, but works if they all are anyway
+        cube([spacing+20, spacing+offset + 20, thickness], center=true);
+        cube([spacing-20, spacing-20+offset, thickness+2], center=true);
         hs=spacing/2;
         for(dy=[-offset/2, offset/2]){
             translate([0, dy, 0]){
