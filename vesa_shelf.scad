@@ -31,16 +31,21 @@ module vesa_mount()
   {
     union()
     {
-      cube([support_width, spacing + support_width + shelf_space, thickness]);
-      cube([spacing + support_width, support_width, thickness]);
-
-      translate([spacing, 0, 0])
+      for(decal_x=[0:1:1])
       {
-        cube([support_width, spacing + support_width + shelf_space, thickness]);
+        translate([spacing * decal_x, 0, 0])
+        {
+          cube([support_width, spacing + support_width + shelf_space, thickness]);
+        }
       }
-      translate([0, spacing, 0])
+
+      for(decal_y=[0:1:1])
       {
-        cube([spacing + support_width, support_width, thickness]);
+        translate([ 0, spacing * decal_y,0])
+        {
+          cube([spacing + support_width, support_width, thickness]);
+        }
+
       }
     }
 
